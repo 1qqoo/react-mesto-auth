@@ -1,0 +1,11 @@
+.header__text_type_logged {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #a9a9a9;
+  margin: 0;
+  padding-top: 5px;
+  text-decoration: none;
+}
