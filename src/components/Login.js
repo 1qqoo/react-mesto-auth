@@ -1,51 +1,24 @@
 import React from "react";
 
-function Login(props) {
-  const [formValue, setFormValue] = React.useState({
-    email: "",
-    password: "",
-  });
-
-  function handleChange(evt) {
-    const { name, value } = evt.target;
-
-    setFormValue({
-      ...formValue,
-      [name]: value,
-    });
-  }
-
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    const { email, password } = formValue;
-    props.handleLogin(email, password);
-  }
-
+function Login() {
   return (
-    <div className="login">
-      <h2 className="login__title">Вход</h2>
-      <form
-        className="login__form"
-        onSubmit={handleSubmit}
-      >
+    <div className="authorization">
+      <h2 className="authorization__title">Вход</h2>
+      <form className="authorization__form">
         <input
           name="email"
-          className="login__input"
+          className="authorization__input"
           placeholder="Email"
-          value={formValue.email}
-          onChange={handleChange}
         ></input>
         <input
           name="password"
-          className="login__input"
+          className="authorization__input"
           placeholder="Пароль"
-          value={formValue.password}
-          onChange={handleChange}
         ></input>
         <button
           to="/sign-in"
           type="submit"
-          className="login__button"
+          className="authorization__button"
         >
           Войти
         </button>

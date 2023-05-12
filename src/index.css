@@ -55,3 +55,6 @@
 @import url("./blocks/authorization/__button/authorization__button.css");
 @import url("./blocks/authorization/__link/authorization__link.css");
 @import url("./blocks/authorization/__paragraph/authorization__paragraph.css");
+@import url("./blocks/infotooltip/infotooltip.css");
+@import url("./blocks/infotooltip/__paragraph/infotooltip__paragraph.css");
+@import url("./blocks/infotooltip/__image/infotooltip__image.css");

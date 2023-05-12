@@ -39,7 +39,7 @@ function EditFrofilePopup(props) {
     >
       <input
         id="name-input"
-        className="popup__input popup__input_el_name"
+        className="popup__input popup__input_type_name"
         name="name"
         type="text"
         placeholder="Введите имя"
@@ -51,11 +51,11 @@ function EditFrofilePopup(props) {
       />
       <span
         id="name-input-error"
-        className="popup__input-error"
+        className="name-input-error popup__input-error"
       />
       <input
-        id="descr-input"
-        className="popup__input popup__input_el_descr"
+        id="job-input"
+        className="popup__input popup__input_type_job"
         name="about"
         type="text"
         placeholder="О себе"
@@ -66,7 +66,7 @@ function EditFrofilePopup(props) {
         required
       />
       <span
-        id="descr-input-error"
+        id="job-input-error popup__input-error"
         className="popup__input-error popup__input-error_active"
       />
     </PopupWithForm>
