@@ -54,7 +54,9 @@
 @import url("./blocks/authorization/__input/authorization__input.css");
 @import url("./blocks/authorization/__button/authorization__button.css");
 @import url("./blocks/authorization/__link/authorization__link.css");
-@import url("./blocks/authorization/__paragraph/authorization__paragraph.css");
+@import url("./blocks/authorization/__signup/authorization__signup.css");
+@import url("./blocks/authorization/__title/authorization__title.css");
 @import url("./blocks/infotooltip/infotooltip.css");
+@import url("./blocks/infotooltip/__container/infotooltip__container.css");
 @import url("./blocks/infotooltip/__paragraph/infotooltip__paragraph.css");
 @import url("./blocks/infotooltip/__image/infotooltip__image.css");

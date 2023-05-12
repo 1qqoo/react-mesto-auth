@@ -1,14 +1,10 @@
 import InfotoltipSuccess from "../images/Union.svg";
 import InfotoltipFailure from "../images/Union-krestik.svg";
 
-function InfoTooltip(props) {
+const InfoTooltip = (props) => {
   return (
-    <div
-      className={`popup popup_type_${props.name} ${
-        props.isOpen ? "popup_opened" : ""
-      }`}
-    >
-      <div className="infotooltip">
+    <div className="infotooltip">
+      <div className="infotooltip__container">
         <img
           className="infotooltip__image"
           src={props.isSuccess ? InfotoltipSuccess : InfotoltipFailure}
@@ -21,12 +17,12 @@ function InfoTooltip(props) {
         </p>
         <button
           onClick={props.onClose}
-          className="button button-close"
+          className="button popup__button-close"
           type="button"
           aria-label="Закрыть"
         ></button>
       </div>
     </div>
   );
-}
+};
 export default InfoTooltip;

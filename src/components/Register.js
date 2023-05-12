@@ -1,20 +1,38 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "./hooks/useForm";
 
-function Register() {
+const Register = ({ registerUser }) => {
+  const { values, handleChange } = useForm({ email: "", password: "" });
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(values);
+  };
+
   return (
     <div className="authorization">
       <h2 className="authorization__title">Регистрация</h2>
-      <form className="authorization__form">
+      <form
+        onSubmit={handleSubmit}
+        className="authorization__form"
+      >
         <input
+          id="email"
           name="email"
+          type="email"
           className="authorization__input"
           placeholder="Email"
+          value={values.email}
+          onChange={handleChange}
         ></input>
         <input
+          id="password"
           name="password"
+          type="password"
           className="authorization__input"
           placeholder="Пароль"
+          value={values.password}
+          onChange={handleChange}
         ></input>
         <button
           to="/sign-in"
@@ -23,19 +41,18 @@ function Register() {
         >
           Зарегистрироваться
         </button>
-        <p className="authorization__paragraph">
-          {" "}
-          Уже зарегистрированы?
-          <Link
-            to="/sign-in"
-            className="authorization__link"
-          >
-            Войти
-          </Link>
-        </p>
       </form>
+      <div className="authorization__signup">
+        <p>Уже зарегистрированы?</p>
+        <Link
+          to="/login"
+          className="authorization__link"
+        >
+          Войти
+        </Link>
+      </div>
     </div>
   );
-}
+};
 
 export default Register;
