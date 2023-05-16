@@ -6,7 +6,7 @@ const Register = ({ registerUser }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(values);
+    registerUser(values)
   };
 
   return (
@@ -22,7 +22,7 @@ const Register = ({ registerUser }) => {
           type="email"
           className="authorization__input"
           placeholder="Email"
-          value={values.email}
+          value={values.email || ''}
           onChange={handleChange}
         ></input>
         <input
@@ -31,7 +31,7 @@ const Register = ({ registerUser }) => {
           type="password"
           className="authorization__input"
           placeholder="Пароль"
-          value={values.password}
+          value={values.password || ''}
           onChange={handleChange}
         ></input>
         <button

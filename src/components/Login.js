@@ -1,15 +1,12 @@
 import { useForm } from "./hooks/useForm";
 import { Link } from "react-router-dom";
 
-const Login = ({ registerUser }) => {
-  const { values, handleChange } = useForm({
-    email: "",
-    password: "",
-  });
+const Login = ({ loginUser }) => {
+  const { values, handleChange } = useForm({ email: "", password: "" });
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(values);
+    loginUser(values)
   };
 
   return (
@@ -40,7 +37,7 @@ const Login = ({ registerUser }) => {
           autoComplete="off"
         ></input>
         <button
-          to="/sign-in"
+          to="/sign-up"
           type="submit"
           className="authorization__button"
         >
@@ -50,7 +47,7 @@ const Login = ({ registerUser }) => {
       <div className="authorization__signup">
         <p>Ещё не зарегистрированы?</p>
         <Link
-          to="/register"
+          to="/sign-up"
           className="authorization__link"
         >
           Регистрация

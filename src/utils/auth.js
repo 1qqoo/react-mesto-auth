@@ -1,51 +1,35 @@
 export const BASE_URL = "https://auth.nomoreparties.co";
 
-export function register(email, password) {
-  return fetch(`${BASE_URL}/signup`, {
-    method: "POST",
+const makeRequest = (url, method, body, token) => {
+  const options = {
+    method: method,
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
-  }).then((res) => {
+  };
+  if (body) {
+    options.body = JSON.stringify(body);
+  }
+  if (token) {
+    options.headers.authorization = `Bearer ${token}`;
+  }
+  return fetch(`${BASE_URL}${url}`, options).then((res) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Где-то ошибка:( : ${res.status}`);
+    throw new Error(`Ошибка код ${res.status}`);
   });
-}
-
-export const login = (email, password) => {
-  return fetch(`${BASE_URL}/signin`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem("jwt", data.token);
-        return data;
-      }
-    })
-    .catch((err) => console.log(err));
 };
 
-export function getContent(jwt) {
-  return fetch(`${BASE_URL}/users/me`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`,
-    },
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Где-то ошибка:( : ${res.status}`);
-      }
-    })
-    .then((data) => data);
-}
+export const register = ({ email, password }) => {
+  return makeRequest("/signup", "POST", { email, password }, null);
+};
+
+export const authorize = ({ email, password }) => {
+  return makeRequest("/signin", "POST", { email, password }, null);
+};
+
+export const getContent = (token) => {
+  return makeRequest("/users/me", "GET", null, token);
+};

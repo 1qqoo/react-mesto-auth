@@ -1,28 +1,29 @@
 import InfotoltipSuccess from "../images/Union.svg";
 import InfotoltipFailure from "../images/Union-krestik.svg";
+import React from "react";
 
-const InfoTooltip = (props) => {
+
+const InfoTooltip = ({ onClose, isOpen, isRegister }) => {
+
   return (
-    <div className="infotooltip">
-      <div className="infotooltip__container">
-        <img
-          className="infotooltip__image"
-          src={props.isSuccess ? InfotoltipSuccess : InfotoltipFailure}
-          alt="Картинка регистрации"
-        />
-        <p className="infotooltip__paragraph">
-          {props.isSuccess
-            ? "Вы успешно зарегистрировались!"
-            : "Что-то пошло не так! Попробуйте ещё раз."}
-        </p>
+    <div className={`popup ${isOpen ? "popup_opened" : ""}`}>
+      <div className="popup__container popup_type_tooltip">
         <button
-          onClick={props.onClose}
-          className="button popup__button-close"
+          className="popup__button-close"
+          onClick={onClose}
+          id="close-popup-profile"
           type="button"
           aria-label="Закрыть"
         ></button>
+        <img
+          className="popup__image-status"
+          src={isRegister.status ? InfotoltipSuccess : InfotoltipFailure}
+          alt="Статус"
+        ></img>
+        <p className="popup__text-status">{isRegister.message}</p>
       </div>
     </div>
   );
 };
+
 export default InfoTooltip;
