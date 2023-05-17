@@ -73,7 +73,10 @@ function App() {
       setUserData(user.data);
       setIsLoggedIn(true);
       navigate("/");
-    });
+    })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [token, isLoggedIn, navigate]);
 
   const registerUser = (email, password) => {
@@ -212,25 +215,6 @@ function App() {
     setIsOpenInfoTooltip(false);
   }
 
-  const isOpen =
-    isEditAvatarPopupOpen ||
-    isEditProfilePopupOpen ||
-    isAddPlacePopupOpen ||
-    selectedCard;
-
-  useEffect(() => {
-    function closeByEscape(evt) {
-      if (evt.key === "Escape") {
-        closeAllPopups();
-      }
-    }
-    if (isOpen) {
-      document.addEventListener("keydown", closeByEscape);
-      return () => {
-        document.removeEventListener("keydown", closeByEscape);
-      };
-    }
-  }, [isOpen]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
